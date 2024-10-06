@@ -59,7 +59,7 @@
 
    **Output:**
    ```
-   🌐 https://www.google.com/search?q=site:example.com+inurl:admin
+   https://www.google.com/search?q=site:example.com+inurl:admin
    ```
 
 2. **Search Multiple Sites from a File with a Single Dork:**
