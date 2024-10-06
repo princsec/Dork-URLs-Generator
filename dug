@@ -105,4 +105,16 @@ while read -r domain; do
     if [ -z "$dork" ]; then continue; fi  # Skip empty lines
     
     # Prepare the dork string: replace spaces with '+' and concatenate with '|'
-    dork_forma
+    dork_formatted=$(echo "$dork" | sed 's/ /+/g')
+    
+    # Construct the search URL
+    url="https://www.google.com/search?q=site:$domain+$dork_formatted"
+    
+    # Output the URL
+    if $silent_mode; then
+      echo "$url"
+    else
+      echo -e "${LIGHT_GRAY}$url${NC}"
+    fi
+  done <<< "$dorks"
+done <<< "$domains"
