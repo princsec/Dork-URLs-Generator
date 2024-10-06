@@ -1,6 +1,6 @@
 # 🌐 DUG (Dork URL Generator)
 
-**DUG** is a powerful Bash script designed to automate the generation of Google search URLs for specified sites and dorks. Say goodbye to manual searching and hello to streamlined results!
+**DUG** is a powerful Bash script designed to automate the generation of Google search URLs for specified domains and dorks. Say goodbye to manual searching and hello to streamlined results!
 
 ---
 
@@ -40,18 +40,18 @@
 ## 🛠️ Usage
 
 ```bash
-./dug <site> [dork]
+./dug <domain> [dork]
 ```
 
 ### 🗒️ Arguments
 
-- `<site>`: Specify the target site or a file containing URLs.
+- `<domain>`: Specify the target domain or a file containing URLs.
 - `[dork]`: Specify the dork or a file containing dorks.
 - Use `-` for either argument to input from standard input.
 
 ### 📖 Examples
 
-1. **Search a Single Site with a Single Dork:**
+1. **Search a Single Domain with a Single Dork:**
 
    ```bash
    ./dug example.com "inurl:admin"
@@ -62,7 +62,7 @@
    https://www.google.com/search?q=site:example.com+inurl:admin
    ```
 
-2. **Search Multiple Sites from a File with a Single Dork:**
+2. **Search Multiple Domains from a File with a Single Dork:**
 
    ```bash
    ./dug domains.txt "ext:pdf"
@@ -80,10 +80,10 @@
    https://www.google.com/search?q=site:example2.com+ext:pdf
    ```
 
-3. **Search Multiple Sites with Multiple Dorks from Files:**
+3. **Search Multiple Domains with Multiple Dorks from Files:**
 
    ```bash
-   ./dug sites.txt dorks.txt
+   ./dug Domains.txt dorks.txt
    ```
 
    If `dorks.txt` contains:
@@ -106,7 +106,7 @@
    cat dorks.txt | ./dug domains.txt -
    ```
 
-5. **Using Standard Input to Provide Sites:**
+5. **Using Standard Input to Provide Domains:**
 
    ```bash
    cat domains.txt | ./dug - "file:pdf"
@@ -116,7 +116,7 @@
 
 ## 🔥 Output
 
-The script generates Google search URLs based on the provided sites and dorks. **Example Output:**
+The script generates Google search URLs based on the provided domains and dorks. **Example Output:**
 
 ```
 https://www.google.com/search?q=site:example1.com+ext:doc+|+ext:docx+|+ext:odt
