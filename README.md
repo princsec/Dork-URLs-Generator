@@ -25,7 +25,7 @@
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/dug.git
+   git clone https://github.com/princsec/Dork-URLs-Generator.git
    cd dug
    ```
 
