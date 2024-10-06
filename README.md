@@ -26,7 +26,7 @@
 
    ```bash
    git clone https://github.com/princsec/Dork-URLs-Generator.git
-   cd dug
+   cd Dork-URLs-Generator
    ```
 
 2. **Make the Script Executable:**
