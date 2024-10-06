@@ -25,15 +25,15 @@ banner() {
 usage() {
   # Print the banner before usage
   banner
-  echo -e "${YELLOW}Usage: $0 <site> [dork]${NC}"
-  echo -e "${GREEN}  site${NC}  : Specify the target site or a file containing URLs."
+  echo -e "${YELLOW}Usage: $0 <domain> [dork]${NC}"
+  echo -e "${GREEN}  site${NC}  : Specify the target domain or a file containing domains."
   echo -e "${GREEN}  dork${NC}  : Specify the dork or a file containing dorks."
   echo -e "${GREEN}  -${NC}     : You can use '-' for either argument to input from standard input."
   echo -e "${LIGHT_GRAY}Examples:${NC}"
   echo -e "  $0 example.com \"inurl:admin\""
-  echo -e "  $0 sites.txt dorks.txt"
-  echo -e "  cat dorks.txt | $0 example.com/sites.txt -"
-  echo -e "  cat sites.txt | $0 - dork/dorks.txt"
+  echo -e "  $0 domains.txt dorks.txt"
+  echo -e "  cat dorks.txt | $0 domain/domains.txt -"
+  echo -e "  cat domains.txt | $0 - dork/dorks.txt"
   echo -e "${RED}Make sure you have the correct arguments or input${NC}"
 }
 
