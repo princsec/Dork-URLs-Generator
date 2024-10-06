@@ -18,7 +18,7 @@ banner() {
   echo -e "${PURPLE}|    \`    \\    |  /\\    \\_\\  \\${NC}"
   echo -e "${PURPLE}/_______  /______/  \\______  /${NC}"
   echo -e "${PURPLE}        \\/                 \\/${NC}"
-  echo -e "${CYAN}                DUG by Prince${NC}"
+  echo -e "${CYAN}                DUG by prince${NC}"
 }
 
 # Function to display usage instructions
@@ -26,13 +26,13 @@ usage() {
   # Print the banner before usage
   banner
   echo -e "${YELLOW}Usage: $0 <domain> [dork]${NC}"
-  echo -e "${GREEN}  site${NC}  : Specify the target domain or a file containing domains."
+  echo -e "${GREEN}  domain${NC}  : Specify the target domain or a file containing URLs."
   echo -e "${GREEN}  dork${NC}  : Specify the dork or a file containing dorks."
   echo -e "${GREEN}  -${NC}     : You can use '-' for either argument to input from standard input."
   echo -e "${LIGHT_GRAY}Examples:${NC}"
   echo -e "  $0 example.com \"inurl:admin\""
   echo -e "  $0 domains.txt dorks.txt"
-  echo -e "  cat dorks.txt | $0 domain/domains.txt -"
+  echo -e "  cat dorks.txt | $0 example.com/-"
   echo -e "  cat domains.txt | $0 - dork/dorks.txt"
   echo -e "${RED}Make sure you have the correct arguments or input${NC}"
 }
@@ -44,8 +44,16 @@ if [ $# -lt 1 ] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
 fi
 
 # Assign the arguments to variables
-site_input=$1
+domain_input=$1
 dork_input=$2
+
+# Check if silent mode is enabled
+silent_mode=false
+if [[ "$domain_input" == "-silent" ]]; then
+  silent_mode=true
+  domain_input=$2
+  dork_input=$3
+fi
 
 # Function to read URLs or dorks from a file or direct argument
 read_data() {
@@ -56,14 +64,16 @@ read_data() {
   fi
 }
 
-# Display the banner only once
-banner
+# Display the banner only if not in silent mode
+if ! $silent_mode; then
+  banner
+fi
 
-# Read site URLs from stdin (if input is piped) or from a file
-if [ "$site_input" == "-" ]; then
-  sites=$(cat)  # Read from standard input
+# Read domain URLs from stdin (if input is piped) or from a file
+if [ "$domain_input" == "-" ]; then
+  domains=$(cat)  # Read from standard input
 else
-  sites=$(read_data "$site_input")
+  domains=$(read_data "$domain_input")
 fi
 
 # Read dork patterns from stdin (if input is piped) or from a file
@@ -73,9 +83,9 @@ else
   dorks=$(read_data "$dork_input")
 fi
 
-# Check if there are any sites or dorks
-if [ -z "$sites" ]; then
-  echo -e "${RED}Error: No sites specified.${NC}"
+# Check if there are any domains or dorks
+if [ -z "$domains" ]; then
+  echo -e "${RED}Error: No domains specified.${NC}"
   exit 1
 fi
 
@@ -84,10 +94,10 @@ if [ -z "$dorks" ]; then
   exit 1
 fi
 
-# Loop through sites and dorks and print the combined Google search URLs
-while read -r site; do
-  site=$(echo "$site" | xargs)  # Trim whitespace around site
-  if [ -z "$site" ]; then continue; fi  # Skip empty lines
+# Loop through domains and dorks and print the combined Google search URLs
+while read -r domain; do
+  domain=$(echo "$domain" | xargs)  # Trim whitespace around domain
+  if [ -z "$domain" ]; then continue; fi  # Skip empty lines
   
   # Loop through each dork
   while read -r dork; do
@@ -95,9 +105,4 @@ while read -r site; do
     if [ -z "$dork" ]; then continue; fi  # Skip empty lines
     
     # Prepare the dork string: replace spaces with '+' and concatenate with '|'
-    dork_formatted=$(echo "$dork" | sed 's/ /+/g')
-    
-    # Construct the search URL
-    echo -e "${LIGHT_GRAY}https://www.google.com/search?q=site:$site+$dork_formatted${NC}"
-  done <<< "$dorks"
-done <<< "$sites"
+    dork_forma
