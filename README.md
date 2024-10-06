@@ -1,4 +1,4 @@
-# 🌐 DUG (Domain URL Grabber)
+# 🌐 DUG (Dork URL Generator)
 
 **DUG** is a powerful Bash script designed to automate the generation of Google search URLs for specified sites and dorks. Say goodbye to manual searching and hello to streamlined results!
 
@@ -65,10 +65,10 @@
 2. **Search Multiple Sites from a File with a Single Dork:**
 
    ```bash
-   ./dug sites.txt "ext:pdf"
+   ./dug domains.txt "ext:pdf"
    ```
 
-   If `sites.txt` contains:
+   If `domains.txt` contains:
    ```
    example1.com
    example2.com
@@ -76,8 +76,8 @@
 
    **Output:**
    ```
-   🌐 https://www.google.com/search?q=site:example1.com+ext:pdf
-   🌐 https://www.google.com/search?q=site:example2.com+ext:pdf
+   https://www.google.com/search?q=site:example1.com+ext:pdf
+   https://www.google.com/search?q=site:example2.com+ext:pdf
    ```
 
 3. **Search Multiple Sites with Multiple Dorks from Files:**
@@ -94,16 +94,16 @@
 
    **Output:**
    ```
-   🌐 https://www.google.com/search?q=site:example1.com+ext:doc+|+ext:docx+|+ext:odt
-   🌐 https://www.google.com/search?q=site:example1.com+file:pdf
-   🌐 https://www.google.com/search?q=site:example2.com+ext:doc+|+ext:docx+|+ext:odt
-   🌐 https://www.google.com/search?q=site:example2.com+file:pdf
+   https://www.google.com/search?q=site:example1.com+ext:doc+|+ext:docx+|+ext:odt
+   https://www.google.com/search?q=site:example1.com+file:pdf
+   https://www.google.com/search?q=site:example2.com+ext:doc+|+ext:docx+|+ext:odt
+   https://www.google.com/search?q=site:example2.com+file:pdf
    ```
 
 4. **Using Standard Input to Provide Dorks:**
 
    ```bash
-   cat dorks.txt | ./dug - -
+   cat dorks.txt | ./dug domains.txt -
    ```
 
 5. **Using Standard Input to Provide Sites:**
@@ -119,8 +119,8 @@
 The script generates Google search URLs based on the provided sites and dorks. **Example Output:**
 
 ```
-🌐 https://www.google.com/search?q=site:example1.com+ext:doc+|+ext:docx+|+ext:odt
-🌐 https://www.google.com/search?q=site:example1.com+file:pdf
+https://www.google.com/search?q=site:example1.com+ext:doc+|+ext:docx+|+ext:odt
+https://www.google.com/search?q=site:example1.com+file:pdf
 ```
 
 ---
@@ -144,6 +144,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 👤 Author
 
-- **Prince** - [Your GitHub Profile](https://github.com/yourusername)
+- **Prince** - [My Twitter Profile](https://x.com/0xprincs)
 
 ---
