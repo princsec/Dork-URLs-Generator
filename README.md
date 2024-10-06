@@ -126,7 +126,7 @@
 You can pipe the output of the script to directly open the generated URLs in your default web browser. For example:
 
 ```bash
-./dug -silent example.com "hello" | xargs -n 1 xdg-open
+./dug -silent example.com "inurl:admin" | xargs -n 1 xdg-open
 ```
 
 This command will:
